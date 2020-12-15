@@ -1,0 +1,84 @@
+<form class="form-inline" [formGroup]="form" (ngSubmit)="search()">
+  <div class="input-group mr-3 w-75">
+    <input type="text" id="searchInput" class="form-control form-control-sm"
+           (focusin)="showClear=true" (focusout)="changeShowClear()" (change)="changeShowClear()"
+           formControlName="movieTitle" placeholder="Type a title to search on IMDB...">
+    <button *ngIf="showClear" type="button" id="clearButton" (click)="clearSearch()"
+            class="btn bg-transparent" style="margin-left: -40px; z-index: 100; color: gray;">
+      <fa-icon icon="times"></fa-icon>
+    </button>
+  </div>
+  <button type="submit" class="btn btn-primary btn-sm">
+    <fa-icon icon="search"></fa-icon>
+    Search
+  </button>
+</form>
+
+<div *ngIf="moviesResult && moviesResult.length > 0">
+  <table class="table table-striped table-hover table-sm">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>IMDB ID</th>
+      <th>#</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let movie of moviesResult">
+      <td [ngSwitch]="movie.Type">
+        <fa-icon icon="image" *ngSwitchCase="'episode'"></fa-icon>
+        <fa-icon icon="gamepad" *ngSwitchCase="'game'"></fa-icon>
+        <fa-icon icon="film" *ngSwitchCase="'movie'"></fa-icon>
+        <fa-icon icon="tv" *ngSwitchCase="'series'"></fa-icon>
+      </td>
+      <td>{{ movie.Title }}</td>
+      <td>{{ movie.Year }}</td>
+      <td>{{ movie.imdbID }}</td>
+      <td>
+        <fa-icon icon="plus-circle" (click)="addRow(movie.imdbID)"></fa-icon>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2 card-body">
+    <ngb-pagination [collectionSize]="resultSize" [(page)]="resultPage" [pageSize]="10" (pageChange)="search(resultPage)"
+                    size="sm" [directionLinks]="false">
+    </ngb-pagination>
+    <span class="result-size">Results Found: {{ resultSize | number }}</span>
+  </div>
+
+</div>
+
+<div *ngIf="moviesFavorite && moviesFavorite.length > 0">
+  <h4>My Favorite Movies</h4>
+
+  <table class="table table-striped table-hover table-sm">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>IMDB ID</th>
+      <th>#</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let movie of moviesFavorite">
+      <td [ngSwitch]="movie.Type">
+        <fa-icon icon="image" *ngSwitchCase="'episode'"></fa-icon>
+        <fa-icon icon="gamepad" *ngSwitchCase="'game'"></fa-icon>
+        <fa-icon icon="film" *ngSwitchCase="'movie'"></fa-icon>
+        <fa-icon icon="tv" *ngSwitchCase="'series'"></fa-icon>
+      </td>
+      <td>{{ movie.Title }}</td>
+      <td>{{ movie.Year }}</td>
+      <td>{{ movie.imdbID }}</td>
+      <td>
+        <fa-icon icon="trash" (click)="removeRow(movie.imdbID)"></fa-icon>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

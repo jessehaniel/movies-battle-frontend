@@ -1,0 +1,45 @@
+#titulo {
+  font-family: "Montserrat", sans-serif;
+  padding-top: 70px;
+  text-align: center;
+}
+
+h1 {
+  color: black;
+  font-weight: bold;
+  font-size: 3.7em;
+}
+
+.bg {
+  min-height: 100%;
+  position: relative;
+}
+
+.bg::after {
+  content: "";
+  background-image: url("https://images2.alphacoders.com/851/thumb-1920-85182.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+#footer {
+  padding: 0.5em 0;
+  font-size: 1em;
+  background-color: rgb(17,20,39);
+  color: rgb(247,184,35);
+  text-align: center;
+}
+
+#letscode-logo {
+  width: 4em;
+  margin-right: 15px;
+}

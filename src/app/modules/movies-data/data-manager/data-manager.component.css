@@ -1,0 +1,23 @@
+form {
+  padding-top: 10%;
+  justify-content: center;
+}
+
+table {
+  margin: 2em 1em 0;
+}
+
+h4 {
+  margin: 1em .8em 0;
+}
+
+.result-size {
+  margin-right: 1em;
+  color: white;
+}
+
+#padding {
+  height: 100px;
+  left: 0;
+  bottom: 4.5em;
+}
