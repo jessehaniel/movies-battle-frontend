@@ -31,7 +31,7 @@ export class DataManagerComponent {
   refreshFavorites(): void {
     this.service.list()
     .pipe(
-      map(value => value.map(m => new MovieMinimalImpl(m.title, m.year.toString(), m.imdbId, m.type)))
+      map(value => value.map(m => new MovieMinimalImpl(m.title, m.year?.toString(), m.imdbId, m.type)))
     )
     .subscribe(movies => this.moviesFavorite = movies);
   }
@@ -64,8 +64,6 @@ export class DataManagerComponent {
   }
 
   removeRow(imdbID: string): void {
-    // const movie = this.moviesFavorite.filter(m => m.imdbID === imdbID)[0];
-    // this.moviesFavorite.splice(this.moviesFavorite.indexOf(movie), 1);
     this.deleteFavoriteMovie(imdbID);
   }
 

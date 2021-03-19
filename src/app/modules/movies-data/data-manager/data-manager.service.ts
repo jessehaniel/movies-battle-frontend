@@ -24,7 +24,7 @@ export class DataManagerService {
   }
 
   search = (movieTitle: string, page = 1) =>
-    this.http.get<MovieSearchResult>(`${this.imdbUrl}${this.searchParam}${movieTitle}${this.pageParam}${page}`);
+    this.http.get<MovieSearchResult>(`${this.imdbUrl}${this.searchParam}${movieTitle}${this.pageParam}${page}`)
 
   detail = (imdbId: string) => this.http.get<MovieMinimal>(`${this.imdbUrl}${this.detailsParam}${imdbId}`);
 
