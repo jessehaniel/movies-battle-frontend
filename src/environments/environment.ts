@@ -4,5 +4,5 @@ export const environment = {
   pageParam: '&page=',
   searchParam: '&s=',
   detailsParam: '&i=',
-  apiUrl: 'http://localhost:8080/movies',
+  apiUrl: 'https://movies-battle.herokuapp.com/movies',
 };
